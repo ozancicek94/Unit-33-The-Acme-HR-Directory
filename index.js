@@ -82,6 +82,13 @@ app.delete('/api/employees/:id', async(req,res,next) => {
   } catch(error){next(error)}
 });
 
+// Error handling middleware
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({err:error.message})
+})
+
 
 
 // create the init() function here ----------------------
